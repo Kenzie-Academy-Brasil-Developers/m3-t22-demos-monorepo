@@ -35,3 +35,50 @@ const movies = [
     synopsis: `As reservas naturais da Terra estão chegando ao fim e um grupo de astronautas recebe a missão de verificar possíveis planetas para receberem a população mundial, possibilitando a continuação da espécie. Cooper é chamado para liderar o grupo e aceita a missão sabendo que pode nunca mais ver os filhos. Ao lado de Brand, Jenkins e Doyle, ele seguirá em busca de um novo lar.`,
   },
 ];
+
+/*
+  Passos lógicos para adicionar um novo elemento ao HTML pelo DOM
+  - 1. Criar o elemento desejado utilizando .createElement
+  - 2. Adicionar as propriedades ao elemento criado (texto interno, classes)
+  - 3. Capturar um elemento de referência que já existe no HTML
+  - 4. Adicionar o elemento criado ao HTML, utilizando o elemento de referência
+  capturado em conjunto com um método de adição.
+*/
+
+// Criando elementos
+const liMovie = document.createElement("li");
+const imgMoviePoster = document.createElement("img");
+const divMovieInfo = document.createElement("div");
+const h3MovieTitle = document.createElement("h3");
+const h4MovieGenre = document.createElement("h4");
+const pMovieSynopsis = document.createElement("p");
+
+// Aninhando elementos
+liMovie.append(imgMoviePoster, divMovieInfo);
+
+divMovieInfo.append(h3MovieTitle, h4MovieGenre, pMovieSynopsis);
+
+// Adicionando classes
+liMovie.classList.add("movie");
+imgMoviePoster.classList.add("movie__poster");
+divMovieInfo.classList.add("movie__info");
+h3MovieTitle.classList.add("movie__title");
+h4MovieGenre.classList.add("movie__genre");
+pMovieSynopsis.classList.add("movie__synopsis");
+
+// Adicionando conteúdo textual
+h3MovieTitle.innerText = "Matrix";
+h4MovieGenre.innerText = "Ficção Científica";
+pMovieSynopsis.innerText =
+  "O jovem programador Thomas Anderson é atormentado por estranhos pesadelos em que está sempre conectado por cabos a um imenso sistema de computadores do futuro.";
+
+// Adicionando propriedades a imagem
+imgMoviePoster.src = "./imgs/matrix-poster.jpg";
+imgMoviePoster.alt = "Poster do Filme Matrix";
+// console.log(liMovie);
+
+// Adicionando ao elemento de referencia
+const ulMovies = document.querySelector(".movies");
+
+ulMovies.appendChild(liMovie);
+console.log(ulMovies);
