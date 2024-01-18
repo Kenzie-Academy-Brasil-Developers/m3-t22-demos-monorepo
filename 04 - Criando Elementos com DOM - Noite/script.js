@@ -35,3 +35,48 @@ const movies = [
     synopsis: `As reservas naturais da Terra estão chegando ao fim e um grupo de astronautas recebe a missão de verificar possíveis planetas para receberem a população mundial, possibilitando a continuação da espécie. Cooper é chamado para liderar o grupo e aceita a missão sabendo que pode nunca mais ver os filhos. Ao lado de Brand, Jenkins e Doyle, ele seguirá em busca de um novo lar.`,
   },
 ];
+
+/*
+  Passos lógicos para adicionar um novo elemento ao HTML pelo DOM:
+  - 1. Criar o elemento desejado utilizando .createElement.
+  - 2. Adicionar as propriedades ao elemento criado (texto interno, classes)
+  - 3. Capturar um elemento de referência que já existe no HTML.
+  - 4. Adicionar o elemento criado ao HTML, utilizando o elemento de referência
+  capturado em conjunto com um método de adição.
+*/
+
+// Criação dos elementos
+const liMovie = document.createElement("li");
+const imgMoviePoster = document.createElement("img");
+const divMovieInfo = document.createElement("div");
+const h3MovieTitle = document.createElement("h3");
+const h4MovieGenre = document.createElement("h4");
+const pMovieSynopsis = document.createElement("p");
+
+// Aninhar os elementos
+liMovie.append(imgMoviePoster, divMovieInfo);
+divMovieInfo.append(h3MovieTitle, h4MovieGenre, pMovieSynopsis);
+
+// Adicionar classes
+liMovie.classList.add("movie");
+imgMoviePoster.classList.add("movie__poster");
+divMovieInfo.classList.add("movie__info");
+h3MovieTitle.classList.add("movie__title");
+h4MovieGenre.classList.add("movie__genre");
+pMovieSynopsis.classList.add("movie__synopsis");
+
+// Adicionando outras propriedades
+imgMoviePoster.src = "./imgs/poderoso-chefao-poster.jpg";
+imgMoviePoster.alt = "Poster do Filme O Poderoso Chefão";
+
+// Conteudo textual
+h3MovieTitle.innerText = "O Poderoso Chefão";
+h4MovieGenre.innerText = "Drama";
+pMovieSynopsis.innerText =
+  "Uma família mafiosa luta para estabelecer sua supremacia nos Estados Unidos depois da Segunda Guerra Mundial. Uma tentativa de assassinato deixa o chefão Vito Corleone incapacitado e força os filhos Michael e Sonny a assumir os negócios.";
+// console.log(liMovie);
+
+// Capturar elemento de referencia
+const ulMovies = document.querySelector(".movies");
+ulMovies.appendChild(liMovie);
+// console.log(ulMovies);
