@@ -58,40 +58,85 @@ const movies = [
   capturado em conjunto com um método de adição.
 */
 
-// Criando elementos
-const liMovie = document.createElement("li");
-const imgMoviePoster = document.createElement("img");
-const divMovieInfo = document.createElement("div");
-const h3MovieTitle = document.createElement("h3");
-const h4MovieGenre = document.createElement("h4");
-const pMovieSynopsis = document.createElement("p");
+function createMovieCard(movieInfo) {
+  // Criando elementos
+  // Card
+  const liMovie = document.createElement("li");
+  const imgMoviePoster = document.createElement("img");
+  const divMovieContent = document.createElement("div");
 
-// Aninhando elementos
-liMovie.append(imgMoviePoster, divMovieInfo);
+  const divMovieInfo = document.createElement("div");
+  const h3MovieTitle = document.createElement("h3");
 
-divMovieInfo.append(h3MovieTitle, h4MovieGenre, pMovieSynopsis);
+  const divMovieDetails = document.createElement("div");
+  const h4MovieGenre = document.createElement("h4");
+  const spanMovieRating = document.createElement("span");
+  const pMovieSynopsis = document.createElement("p");
 
-// Adicionando classes
-liMovie.classList.add("movie");
-imgMoviePoster.classList.add("movie__poster");
-divMovieInfo.classList.add("movie__info");
-h3MovieTitle.classList.add("movie__title");
-h4MovieGenre.classList.add("movie__genre");
-pMovieSynopsis.classList.add("movie__synopsis");
+  const divMovieActions = document.createElement("div");
+  const btnAddMovieWatchList = document.createElement("button");
+  const btnMovieRent = document.createElement("button");
 
-// Adicionando conteúdo textual
-h3MovieTitle.innerText = "Matrix";
-h4MovieGenre.innerText = "Ficção Científica";
-pMovieSynopsis.innerText =
-  "O jovem programador Thomas Anderson é atormentado por estranhos pesadelos em que está sempre conectado por cabos a um imenso sistema de computadores do futuro.";
+  // Aninhando elementos
+  liMovie.append(imgMoviePoster, divMovieContent);
+  divMovieContent.append(divMovieInfo, divMovieActions);
+  divMovieInfo.append(h3MovieTitle, divMovieDetails, pMovieSynopsis);
+  divMovieDetails.append(h4MovieGenre, spanMovieRating);
+  divMovieActions.append(btnAddMovieWatchList, btnMovieRent);
 
-// Adicionando propriedades a imagem
-imgMoviePoster.src = "./imgs/matrix-poster.jpg";
-imgMoviePoster.alt = "Poster do Filme Matrix";
-// console.log(liMovie);
+  // Adicionando classes
+  liMovie.classList.add("movie");
+  imgMoviePoster.classList.add("movie__poster");
 
-// Adicionando ao elemento de referencia
-const ulMovies = document.querySelector(".movies");
+  divMovieContent.classList.add("movie__content");
+  divMovieInfo.classList.add("movie__info");
+  divMovieDetails.classList.add("movie__details");
+  divMovieActions.classList.add("movie__actions");
 
-ulMovies.appendChild(liMovie);
-console.log(ulMovies);
+  h3MovieTitle.classList.add("movie__title");
+  h4MovieGenre.classList.add("movie__genre");
+  // Movie Rating
+  spanMovieRating.classList.add("movie__rating");
+
+  if (movieInfo.rated === "R") {
+    spanMovieRating.classList.add("movie__rating--pg-r");
+  } else if (movieInfo.rated === "PG-13") {
+    spanMovieRating.classList.add("movie__rating--pg-13");
+  } else if (movieInfo.rated === "G") {
+    spanMovieRating.classList.add("movie__rating--pg-g");
+  }
+
+  pMovieSynopsis.classList.add("movie__synopsis");
+
+  btnAddMovieWatchList.classList.add("movie__action-btn");
+  btnMovieRent.classList.add("movie__action-btn");
+
+  // Adicionando conteúdo textual
+  h3MovieTitle.innerText = movieInfo.title;
+  h4MovieGenre.innerText = movieInfo.genre;
+  spanMovieRating.innerText = movieInfo.rated;
+  pMovieSynopsis.innerText = movieInfo.synopsis;
+
+  // Adicionando propriedades a imagem
+  imgMoviePoster.src = movieInfo.poster;
+  imgMoviePoster.alt = `Poster do Filme ${movieInfo.title}`;
+
+  btnAddMovieWatchList.innerText = "Adicionar a Watchlist";
+  btnMovieRent.innerText = "Alugar";
+  console.log(liMovie);
+
+  return liMovie;
+}
+
+function renderCards(movieList) {
+  const ulMovies = document.querySelector(".movies");
+
+  for (let i = 0; i < movieList.length; i++) {
+    const currentMovie = movieList[i];
+    // console.log(currentMovie);
+    const card = createMovieCard(currentMovie);
+    ulMovies.appendChild(card);
+  }
+}
+renderCards(movies);
+// createMovieCard(movies[4]);
