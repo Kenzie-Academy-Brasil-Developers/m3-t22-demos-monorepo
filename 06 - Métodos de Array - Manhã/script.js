@@ -20,7 +20,7 @@ console.log("Lista de Livros Original:");
 console.log(originalBookList);
 console.log("");
 
-// 1. forEach
+// 1. Método forEach
 function callBackShowBooks(bookToShow, index) {
   console.log(`Livro de indice ${index}`);
   console.log(bookToShow);
@@ -63,7 +63,7 @@ function showBooks(books) {
 
 // showBooks(originalBookList);
 
-// 2. map
+// 2. Método map
 function callBackIndexBooks(currentBook, index) {
   const newBook = {
     id: index + 1,
@@ -143,6 +143,7 @@ function addIdentificationToBooks(books) {
 // console.log("Lista de Livros com ID adicionado");
 // console.log(indexedBookList);
 
+// 3. Método filter
 function filterBooksByPageNumber(books, pagesFilter) {
   /*
   - Objetivo: Criar novo array de livros, somente com os livros que
