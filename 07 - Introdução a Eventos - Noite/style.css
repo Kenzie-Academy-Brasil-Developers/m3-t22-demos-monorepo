@@ -1,0 +1,77 @@
+body {
+    max-width: 500px;
+    /* margin: 0 auto; */
+    margin-inline: auto;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .section-example {
+    background-color: #ffe4c4;
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  p {
+    background-color: silver;
+  }
+  
+  .btn__container {
+    background-color: thistle;
+  
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    background-color: brown;
+    color: #f4f4f4;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #paragraph-2 {
+    transition: opacity 1s;
+  }
+  
+  .hidden {
+    opacity: 0;
+  }
+  
+  .tech__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .tech__item {
+    background-color: teal;
+  }
+  
+  .tech__description {
+    background-color: tomato;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: thistle;
+  }
+  
+  form > input {
+    padding: 0.7rem;
+  }
+  
+  input[name="first-name"] {
+    background-color: salmon;
+  }
+  
+  input[name="last-name"] {
+    background-color: tan;
+  }
